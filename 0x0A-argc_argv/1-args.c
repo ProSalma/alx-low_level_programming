@@ -1,17 +1,15 @@
-#include "main.h"
 #include <stdio.h>
+#include <unistd.h>
 
 /**
- * main - Function that prints number of arguments
- * @argc: The argument count
- * @argv: The argument vector
+ * main  - Function used
+ * @c:  The 1st variable
+ * @v: The 2nd Variable
  * Return: To 0
- * BySalma.as
  */
 
-int	main(int argc, char *argv[])
+int main(int c, char __attribute__((unused)) **v)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
+	printf("%d\n", c - 1);
 	return (0);
 }

@@ -1,22 +1,16 @@
 #include "main.h"
 
 /**
- * main - Function  that prints its name
- * @argv: The argument
- * @argc: The argument count
+ * main - Function that prints its name
+ * @c:  The variable
+ * @v: The Variable
  * Return: To 0
  * BySalma.as
  */
 
-int	main(int argc, char *argv[])
+int main(int c, char **v)
 {
-	int i = 0;
-
-	while (argv[0][i] != '\0' && argc)
-	{
-		_putchar(argv[0][i]);
-		++i;
-	}
-	_putchar('\n');
+	if (c > 0)
+		printf("%s\n", *v);
 	return (0);
 }
