@@ -1,9 +1,10 @@
-#include "main.h"
+#include <stdio.h>
+#include <unistd.h>
 
 /**
- * main - Function that prints its name
- * @c:  The variable
- * @v: The Variable
+ * main - Function used
+ * @c: The 1st variable
+ * @v: The 2st Variable
  * Return: To 0
  * BySalma.as
  */
