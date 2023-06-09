@@ -1,35 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
- * main - Function adds positive numbers
- * @argc: The argument count
- * @argv: The argument vector
- * Return: sum of numbers
+ * is_valid_number - The Function used
+ * @s:  The variable
+ * Return: To 0 or 1
+ * BySalma.as
  */
 
-int	main(int argc, char *argv[])
-{
-	int num;
-	int sum = 0;
-	int x, y;
 
-	for (x = 1; y < argc; x++)
+int is_valid_number(char *s)
+{
+	int i = 0;
+
+	while (s[i])
 	{
-		for (y = 0; argv[x][y]; y++)
+		if (!(s[i] >= '0' && s[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+/**
+ * main  - The Function used
+ * @argc:  The 1st variable
+ * @argv: The 2nd variable
+ * Return: To 0 or 1
+ */
+
+int main(int argc, char **argv)
+{
+	int i = 1;
+	int sum = 0;
+
+	if (argc == 1)
+	{
+		printf("0\n");
+		return (0);
+	}
+	while (argv[i])
+	{
+		if (!is_valid_number(argv[i]))
 		{
-			if (!isdigit(argv[x][y]))
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
-		num = atoi(argv[x]);
-		if (num > 0)
-		{
-			sum += num;
-		}
+		sum += atoi(argv[i]);
+		i++;
 	}
 	printf("%d\n", sum);
 	return (0);
