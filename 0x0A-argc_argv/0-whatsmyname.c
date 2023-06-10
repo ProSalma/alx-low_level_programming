@@ -3,9 +3,9 @@
 
 /**
  * main - Function used
- * @c: The 1st variable
- * @v: The 2st Variable
- * Return: To 0
+ * @c:  The 1st variable
+ * @v: The 2nd variable
+ * Return: To 0 if true
  * BySalma.as
  */
 
