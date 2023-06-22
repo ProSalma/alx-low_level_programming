@@ -5,7 +5,7 @@
 /**
   * int_index - Function that searches for an integer
   * @array: The array to check
-  * @size: The number of elements in the array 
+  * @size: The number of elements in the array
   * @cmp: The pointer to be used to compare values
   * Return: To -1 or to integer
   * @BySalma.as
