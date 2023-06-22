@@ -3,7 +3,7 @@
 
 /**
  * array_iterator - Function given as a parameter
- * @array: The array to execute 
+ * @array: The array to execute
  * @size: The size of the array
  * @action: The pointer to the function to use
  * Return: Void, no return
@@ -13,15 +13,14 @@
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	size_t i;
+	size_t i = 0;
 
-	if (array && action)
+	if (!array || !action)
+		return;
+	while (i < size)
 	{
-		i = 0;
-		while (i < size)
-		{
-			action(array[i]);
-			i++;
-		}
+		action(array[i]);
+		i++;
 	}
+
 }
