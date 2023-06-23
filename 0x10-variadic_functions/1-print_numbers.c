@@ -4,8 +4,8 @@
 
 /**
  * print_numbers - Function prints numbers, followed by a new line
- * @separator: The string to be printed 
- * @n: The number of integers passed 
+ * @separator: The string to be printed
+ * @n: The number of integers passed
  * @...: The variable number of numbers to be printed
  * Return: No return
  */
