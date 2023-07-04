@@ -1,58 +1,49 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
-
-/**
- * _strlen - The 1st Function
- * @s:  The variable
- * Return: To x
- * @BySalma.as
- */
-
-unsigned int _strlen(char *s)
-{
-	unsigned int x = 0;
-
-	while (s[x])
-		x++;
-	return (x);
-}
-
-
+#include <stdio.h>
 
 /**
- * str_concat - The 2nd Function
- * @s1:  The !st variable
- * @s2: The @nd variable
- * Return: To NULL or pointer
+ * str_concat - Concatenates two strings.
+ * @s1: First string
+ * @s2: Second string
+ *
+ * Return: A pointer to a newly allocated space in memory which
+ * contains the contents of s1, followed by the contents of s2,
+ * and null terminated. NULL on failure.
  */
+
 
 char *str_concat(char *s1, char *s2)
 {
-	int x = 0;
-	int y = 0;
-	int size;
-	char *p;
+	int x, y, len1, len2, len;
+	char *result;
 
-	if (!s1)
-		s1 = "";
-	if (!s2)
-		s2 = "";
-	size = _strlen(s1) + _strlen(s2) + 1;
-	p = malloc(size * sizeof(char));
-	if (!p)
+	len1 = len2 = 0;
+
+	if (s1 != NULL)
+	{
+		x = 0;
+		while (s1[x++] != '\0')
+			len1++;
+	}
+
+	if (s2 != NULL)
+	{
+		x = 0;
+		while (s2[x++] != '\0')
+			len2++;
+	}
+
+	len = len1 + len2;
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (result == NULL)
 		return (NULL);
-	while (s1[x])
-	{
-		p[x] = s1[x];
-		x++;
-	}
-	while (s2[y])
-	{
-		p[x + y] = s2[y];
-		y++;
-	}
-	p[x + y] = s2[y];
-	return (p);
+
+	for (x = 0; x < len1; x++)
+		result[x] = s1[x];
+	for (y = 0; y < len2; y++, x++)
+		result[x] = s2[y];
+	result[len] = '\0';
+
+	return (result);
 }

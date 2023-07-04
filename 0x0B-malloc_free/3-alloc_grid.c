@@ -1,48 +1,40 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-
 /**
- * alloc_grid - Function returns  pointer to a 2 dimensional array of integer
- * @width:  The !st variable
- * @height: The 2nd Variable
- * Return: To NULL or tab
- * @BySalma.as
+ * alloc_grid - Returns a pointer to a 2 dimensional array of integers.
+ * @width: The width of array
+ * @height: The height of array
+ *
+ * Return: Pointer to a 2 dimensional array of integers.
  */
-
 int **alloc_grid(int width, int height)
 {
-	int x = 0;
-	int y = 0;
-	int **tab;
-	int z = 0;
+	int **array, x, y;
+	int len = width * height;
 
-	if (width <= 0 || height <= 0)
+	if (len <= 0)
 		return (NULL);
-	tab = (int **) malloc(sizeof(int *) * height);
-	if (!tab)
+
+	array = (int **)malloc(sizeof(int *) * height);
+	if (array == NULL)
 		return (NULL);
-	while (x < height)
+
+	for (x = 0; x < height; x++)
 	{
-		tab[x] = malloc(sizeof(int) * width);
-		if (!tab[x])
+		array[x] = (int *)malloc(sizeof(int) * width);
+		if (array[x] == NULL)
 		{
-			while (z <= x)
-			{
-				free(tab[z]);
-				z++;
-			}
-			free(tab);
+			for (x--; x >= 0; x--)
+				free(array[x]);
+			free(array);
 			return (NULL);
 		}
-		y = 0;
-		while (y < width)
-		{
-			tab[x][y] = 0;
-			y++;
-		}
-		x++;
 	}
-	return (tab);
+
+	for (x = 0; x < height; x++)
+		for (y = 0; y < width; y++)
+			array[x][y] = 0;
+
+	return (array);
 }
