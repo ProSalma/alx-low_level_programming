@@ -3,63 +3,59 @@
 #include <stdio.h>
 
 /**
- * _realloc_list - reallocates memory for an array of pointers
+ * _r - Reallocates memory for an array of pointers
  * to the nodes in a linked list
- * @list: the old list to append
- * @size: size of the new list (always one more than the old list)
- * @new_node: new node to add to the list
+ * @list: The old list to append
+ * @size: Size of the new list (always one more than the old list)
+ * @new: New node to add to the list
  *
- * Return: pointer to the new list
+ * Return: The new list
  */
-const listint_t **_realloc_list(const listint_t **list, size_t size, const listint_t *new_node)
+const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
 {
-	const listint_t **new_list;
-	size_t i;
+const listint_t **newlist;
+size_t x;
 
-	new_list = malloc(size * sizeof(listint_t *));
-	if (new_list == NULL)
-	{
-		free(list);
-		exit(98);
-	}
-
-	for (i = 0; i < size - 1; i++)
-		new_list[i] = list[i];
-	new_list[i] = new_node;
-
-	free(list);
-	return (new_list);
+newlist = malloc(size * sizeof(listint_t *));
+if (newlist == NULL)
+{
+free(list);
+exit(98);
+}
+for (x = 0; x < size - 1; x++)
+newlist[x] = list[x];
+newlist[x] = new;
+free(list);
+return (newlist);
 }
 
 /**
- * print_listint_safe - prints a listint_t linked list.
- * @head: pointer to the start of the list
+ * print_listint_safe - Prints a listint_t linked list.
+ * @head: The pointer to the start of the list
  *
- * Return: the number of nodes in the list
+ * Return: The number of nodes
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t i, num = 0;
-	const listint_t **list = NULL;
+size_t x, count = 0;
+const listint_t **list = NULL;
 
-	while (head != NULL)
-	{
-		for (i = 0; i < num; i++)
-		{
-			if (head == list[i])
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				free(list);
-				return (num);
-			}
-		}
-
-		num++;
-		list = _realloc_list(list, num, head);
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-	}
-
-	free(list);
-	return (num);
+while (head != NULL)
+{
+for (x = 0; x < count; x++)
+{
+if (head == list[x])
+{
+printf("-> [%p] %d\n", (void *)head, head->n);
+free(list);
+return (count);
+}
+}
+count++;
+list = _r(list, count, head);
+printf("[%p] %d\n", (void *)head, head->n);
+head = head->next;
+}
+free(list);
+return (count);
 }
